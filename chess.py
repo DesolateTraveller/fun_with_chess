@@ -10,6 +10,7 @@ import streamlit as st
 #---------------------------------------------------------------------------------------------------------------------------------
 import chess
 #import chess.svg
+import chess.pgn
 from PIL import Image
 import io
 
