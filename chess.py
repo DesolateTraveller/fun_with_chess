@@ -20,15 +20,11 @@ st.set_page_config(page_title="♟️ Chess | v0.1",
                    layout="wide",
                    #page_icon=               
                    initial_sidebar_state="collapsed")
-
 #----------------------------------------
 st.title("♟️ Chess")
 st.markdown('Created by | <a href="mailto:avijit.mba18@gmail.com">Avijit Chakraborty</a>', 
             unsafe_allow_html=True)
-
-st.divider()
-
-# Set background color or image
+#----------------------------------------
 page_bg_img = '''
 <style>
 body {
@@ -41,19 +37,27 @@ body {
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 #---------------------------------------------------------------------------------------------------------------------------------
-### Functions & Definitions
+### Sidebar for additional features
 #---------------------------------------------------------------------------------------------------------------------------------
 
+st.sidebar.title("Chess App Features")
+st.sidebar.markdown("""
+- Enter your moves in UCI format (e.g., e2e4).
+- Click "Reset Board" to start a new game.
+- Watch the board update in real-time as you make your moves.
+""")
+st.sidebar.info("Enjoy your game of chess! Feel free to contact the creator for more features or any issues.")
+
+#---------------------------------------------------------------------------------------------------------------------------------
+### Functions & Definitions
+#---------------------------------------------------------------------------------------------------------------------------------
 def render_board(board):
     """Renders the chess board as an SVG image."""
     return chess.svg.board(board, size=400)
 
 board = chess.Board()
-
-# Placeholder for board display
 board_ui = st.empty()
 
-# Function to update the board display
 def update_board():
     svg_board = render_board(board)
     # Convert SVG to PNG for Streamlit display
@@ -61,8 +65,6 @@ def update_board():
     board_ui.image(image, use_column_width=True)
 
 update_board()
-
-# User input for moves
 user_move = st.text_input("Enter your move (e.g., e2e4):")
 
 if user_move:
@@ -72,20 +74,10 @@ if user_move:
     except ValueError:
         st.error("Invalid move! Please enter a valid move in UCI format (e.g., e2e4).")
 
-# Reset button to reset the board
 if st.button("Reset Board"):
     board.reset()
     update_board()
 
-#---------------------------------------------------------------------------------------------------------------------------------
-### Sidebar for additional features
-#---------------------------------------------------------------------------------------------------------------------------------
-st.sidebar.title("Chess App Features")
-st.sidebar.markdown("""
-- Enter your moves in UCI format (e.g., e2e4).
-- Click "Reset Board" to start a new game.
-- Watch the board update in real-time as you make your moves.
-""")
-st.sidebar.info("Enjoy your game of chess! Feel free to contact the creator for more features or any issues.")
+
 
 
