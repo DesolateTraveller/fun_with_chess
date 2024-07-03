@@ -1,3 +1,4 @@
 streamlit
 chess==1.10.0
 python-chess
+python==3.8
