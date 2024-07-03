@@ -9,7 +9,7 @@ import streamlit as st
 ### Import Libraries
 #---------------------------------------------------------------------------------------------------------------------------------
 import chess
-import chess.svg
+#import chess.svg
 from PIL import Image
 import io
 
